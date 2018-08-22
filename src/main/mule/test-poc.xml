@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="93738a22-cddd-4d8d-828f-8324741d2f80" >
+		<http:listener-connection host="0.0.0.0" port="8084" />
+	</http:listener-config>
+	<flow name="test-pocFlow" doc:id="69b332f8-b765-402b-896a-b9914c1154b8" >
+		<http:listener doc:name="Listener" doc:id="db244147-94b2-4ac9-ae65-155f7054b37a" config-ref="HTTP_Listener_config" path="test">
+			<ee:repeatable-file-store-stream />
+		</http:listener>
+		<set-payload value="success" doc:name="Set Payload" doc:id="b4452099-d7e2-4160-a087-8a0552edbbb1" />
+	</flow>
+</mule>
